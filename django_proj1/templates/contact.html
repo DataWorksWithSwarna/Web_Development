@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+<img src="{% static 'img/contact.jpg' %}" alt="Contact Background"
+  style="width: 100%; height: 400px; object-fit: cover;">
+
+<div class="container"
+  style="background-color: #1e341f; padding: 20px; border-radius: 5px; margin-top: 20px; color: white;">
+  <h1>Contact Us</h1>
+  <p>If you have any questions, concerns, or feedback, please feel free to reach out to us. We value your input and are
+    here to assist you.</p>
+
+  <form method="post" action="{% url 'contact' %}">
+    {% csrf_token %}
+  <div class="mb-3" style="margin-top: 20px;">
+    <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Full Name">
+  </div>
+
+  <div class="mb-3" style="margin-top: 20px;">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+
+  <div class="mb-3" style="margin-top: 20px;">
+    <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
+    <input type="text" class="form-control" name="contact_number" id="exampleFormControlInput1" placeholder="Enter your contact number">
+  </div>
+
+  <div class="mb-3" style="margin-top: 20px;">
+    <label for="exampleFormControlTextarea1" class="form-label">Share your concerns</label>
+    <textarea class="form-control" name="concerns" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+
+  <div class="form-floating" style="margin-top: 20px;">
+    <textarea class="form-control" name="comments" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    <label for="floatingTextarea">Comments</label>
+  </div><br><br>
+  <a class="btn btn-primary" href="http://127.0.0.1:8000/" role="button">Back to Home</a>
+  <input class="btn btn-primary" type="submit" value="Submit">
+</div><br><br>
+</form>
+{% endblock body %}

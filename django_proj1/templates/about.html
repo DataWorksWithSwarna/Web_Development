@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}About Us{% endblock title %}</title>
+  <style>
+    .home-bg {
+      background: linear-gradient(135deg, #064e3b, #10b981);
+    }
+  </style>
+</head>
+
+<body>
+  {% block body %}
+
+  {% load static %}
+  <!--About Us content-->
+  <div class="home-bg">
+    <div class="px-3" style="background-color: #35553a; padding: 50px; color: white;">
+      <h1>About Us</h1><br>
+      <p class="lead">Zarnavé Haven is your destination for curated elegance. We showcase premium fashion, sophisticated
+        home décor, and bespoke interior design ideas designed to transform modern living into an art form. Every
+        selection is made with intention — to inspire refinement, comfort, and personal style. We partner with trusted
+        brands to bring you the finest selections from Amazon and Flipkart. (Products featured
+        contain affiliate links)</p>
+    </div>
+  </div>
+  <img src="{% static 'img/about.jpg' %}" class="d-block w-100" alt="About Us"
+    style="height: 300px; object-fit: cover;">
+
+  <div class="lead" style="padding: 50px; background-color: #35553a; color: white;">
+    <h1>Our Mission</h1><br>
+    <p>At Zarnavé Haven, we are passionate about curating a
+      collection of products that embody elegance and sophistication. Our mission is to provide our customers with a
+      seamless shopping experience, offering a wide range of premium fashion, home décor, and interior design ideas that
+      inspire and elevate their lifestyles. We believe that every product we feature should not only meet the highest
+      standards of quality but also reflect our commitment to style and refinement. By partnering with trusted brands
+      and carefully selecting each item, we aim to create a haven for those seeking to enhance their living spaces and
+      personal style with timeless elegance.</p>
+  </div>
+
+    {% endblock body %}
+</body>
+
+</html>
