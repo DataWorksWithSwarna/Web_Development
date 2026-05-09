@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from datetime import datetime
-from firstapp.models import Contact
+from firstapp.models import Contact, Product, Cart
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
@@ -78,33 +78,47 @@ def user_checkout(request):
     }
     return render(request, "checkout.html")
 
-def details(request):
-    return render(request, "details.html")
+def details(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    return render(request, "details.html", {
+        'product': product
+    })
 
 def cart(request):
-    return render(request, "cart.html")
+    cart_items = Cart.objects.all()
+
+    total = 0
+
+    for item in cart_items:
+      item.subtotal = item.product.price * item.quantity
+      total += item.subtotal
+
+    return render(request, "cart.html", {
+        'cart_items': cart_items,
+        'total': total
+    })
+
 
 def add_to_cart(request, product_id):
-    product = get_object_or_404(id=product_id)
+    product = get_object_or_404(Product, id=product_id)
 
-    cart = request.session.get('cart', {})
+    
+    cart_item, created = Cart.objects.get_or_create(
+        product=product
+    )
 
-    product_id = str(product_id)
-
-    if product_id in cart:
-        cart[product_id]['quantity'] += 1
-    else:
-        cart[product_id] = {
-            'name': product.name,
-            'price': float(product.price),
-            'quantity': 1,
-            'image': product.image.url
-        }
-
-    request.session['cart'] = cart
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
 
     return redirect("cart")
 
+def clear_cart(request):
+
+    Cart.objects.all().delete()
+
+    return redirect("cart")
 
 #def remove_from_cart(request, product_id):
 

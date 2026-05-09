@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 admin.site.site_header = "Zarnave Haven Admin"
 admin.site.site_title = "Zarnave Haven Admin Portal"
@@ -31,9 +33,13 @@ urlpatterns = [
     path("contact/", include('firstapp.urls')),
     path("user_products/", include('firstapp.urls')),
     path("checkout/", include('firstapp.urls')),
-    path("details/", include('firstapp.urls')),
+    path("details/<int:product_id>/", include('firstapp.urls')),
     path("cart/", include('firstapp.urls')),
-    path("add_to_cart/<int:product_id>/", include('firstapp.urls'))
+    path("add-to-cart/<int:product_id>/", include('firstapp.urls')),
+    path("clear-cart/", include('firstapp.urls'))
     #path("remove_from_cart/", include('firstapp.urls')),
     #path("update_cart/", include('firstapp.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
