@@ -29,6 +29,11 @@ urlpatterns = [
     path("logout/", include('firstapp.urls')),
     path("about/", include('firstapp.urls')),
     path("contact/", include('firstapp.urls')),
-    path("products/", include('firstapp.urls')),
-    path("checkout/", include('firstapp.urls'))
+    path("user_products/", include('firstapp.urls')),
+    path("checkout/", include('firstapp.urls')),
+    path("details/", include('firstapp.urls')),
+    path("cart/", include('firstapp.urls')),
+    path("add_to_cart/<int:product_id>/", include('firstapp.urls'))
+    #path("remove_from_cart/", include('firstapp.urls')),
+    #path("update_cart/", include('firstapp.urls'))
 ]

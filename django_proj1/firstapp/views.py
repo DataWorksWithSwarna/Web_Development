@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from datetime import datetime
 from firstapp.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, login
+
 
 # Create your views here.
 def index(request):
@@ -31,8 +32,8 @@ def contact(request):
         messages.success(request, "Your message has been sent successfully!")
     return render(request, "contact.html")
 
-def products(request):
-    return render(request, "products.html")
+def user_products(request):
+    return render(request, "user_products.html")
 
 def loginuser(request):
     if request.method == "POST":
@@ -60,4 +61,81 @@ def logoutuser(request):
     return redirect("home")
 
 def user_checkout(request):
+
+    cart = request.session.get('cart', {})
+
+    total = 0
+
+    for key, item in cart.items():
+
+        item['subtotal'] = item['price'] * item['quantity']
+
+        total += item['subtotal']
+
+    context = {
+        'cart': cart,
+        'total': total
+    }
     return render(request, "checkout.html")
+
+def details(request):
+    return render(request, "details.html")
+
+def cart(request):
+    return render(request, "cart.html")
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(id=product_id)
+
+    cart = request.session.get('cart', {})
+
+    product_id = str(product_id)
+
+    if product_id in cart:
+        cart[product_id]['quantity'] += 1
+    else:
+        cart[product_id] = {
+            'name': product.name,
+            'price': float(product.price),
+            'quantity': 1,
+            'image': product.image.url
+        }
+
+    request.session['cart'] = cart
+
+    return redirect("cart")
+
+
+#def remove_from_cart(request, product_id):
+
+    cart = request.session.get('cart', {})
+
+    product_id = str(product_id)
+
+    if product_id in cart:
+        del cart[product_id]
+
+    request.session['cart'] = cart
+
+    return redirect("cart")
+
+#def update_cart(request, product_id):
+
+    if request.method == "POST":
+
+        quantity = int(request.POST.get('quantity'))
+
+        cart = request.session.get('cart', {})
+
+        product_id = str(product_id)
+
+        if product_id in cart:
+
+            if quantity > 0:
+                cart[product_id]['quantity'] = quantity
+            else:
+                del cart[product_id]
+
+        request.session['cart'] = cart
+
+    return redirect("cart")

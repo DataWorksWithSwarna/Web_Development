@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}User Products{% endblock title %}</title>
+</head>
+
+{% block body %}
+<div class="row text-center py-5" style="background-color: #d0d6d0; border-radius: 5px;">
+
+    <div class="col-lg-3 my-4 px-5">
+        <img src="{% static 'img/fashion.jpg' %}" class="rounded-circle" height="140" width="140">
+        <h2 class="fw-normal">Fashion</h2>
+    </div>
+
+    <div class="col-lg-3 my-4">
+        <img src="{% static 'img/home.jpg' %}" class="rounded-circle" height="140" width="140">
+        <h2 class="fw-normal">Home Decor</h2>
+    </div>
+
+    <div class="col-lg-3 my-4">
+        <img src="{% static 'img/travel2.jpg' %}" class="rounded-circle" height="140" width="140">
+        <h2 class="fw-normal">Travel</h2>
+    </div>
+
+    <div class="col-lg-3 my-4">
+        <img src="{% static 'img/gift.jpg' %}" class="rounded-circle" height="140" width="140">
+        <h2 class="fw-normal">Jewellery</h2>
+    </div>
+
+</div>
+
+<!-- START THE FEATURETTES -->
+<div class="container" style="background-color: #689368; border-radius: 5px;">
+    <hr class="featurette-divider px-5" style="margin-top: 4px;">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Fashion Trends.<br><span class="text-body-secondary">Check out
+                    our latest fashion trends that’ll
+                    blow your mind.</span></h2><br>
+            <a class="btn btn-success" href="{% url 'details' %}" role="button">View details</a>
+
+        </div>
+        <div class="col-md-5"> <img src="{% static 'img/fashion.jpg' %}" class="img-fluid"
+                style="height: 500px; width: 500px;"> </div>
+    </div>
+    <hr class="featurette-divider px-5" style="margin-top: 4px;">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Oh yeah, furniture sooo good. <span
+                    class="text-body-secondary">See
+                    for yourself.</span></h2><br>
+            <a class="btn btn-success" href="{% url 'details' %}" role="button">View details</a>
+        </div>
+        <div class="col-md-5 order-md-1"> <img src="{% static 'img/furniture.jpg' %}" class="img-fluid"
+                style="height: 500px; width: 500px;"> </div>
+    </div>
+    <hr class="featurette-divider px-5">
+    <div class="row featurette px-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Jewellery, you cant resist. <span
+                    class="text-body-secondary">Checkmate.</span></h2><br>
+            <a class="btn btn-success" href="{% url 'details' %}" role="button">View details</a>
+        </div>
+        <div class="col-md-5"> <img src="{% static 'img/ring.jpg' %}" class="img-fluid"
+                style="height: 500px; width: 500px;"> </div>
+    </div>
+    <hr class="featurette-divider px-5">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Travel products, that will make your trips unforgettable. <span
+                    class="text-body-secondary">Look Trendy.</span></h2><br>
+            <a class="btn btn-success" href="{% url 'details' %}" role="button">View details</a>
+        </div>
+        <div class="col-md-5 order-md-1"> <img src="{% static 'img/travel.jpg' %}" class="img-fluid"
+                style="height: 500px; width: 500px;"> </div>
+    </div>
+    <hr class="featurette-divider px-5" style="margin-top: 4px;"> <!-- /END THE FEATURETTES -->
+</div>
+</div>
+
+{% endblock body %}
