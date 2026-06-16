@@ -17,3 +17,19 @@ Mobile-first, responsive design optimized across all devices
 Modern, aesthetic visual language that perfectly reflects the Zarnavé Haven brand identity
 
 This project demonstrates end-to-end web development skills with a particular passion for creating beautiful, intuitive digital experiences that drive user engagement and conversion.
+
+# Home Page
+![Home Page](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%201.png)
+![Home Page2](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%202.png)
+
+# Product Listing Page
+![Product Listing](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%203.png)
+
+# Cart
+![Cart](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%204.png)
+
+# Checkout
+![Checkout](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%205.png)
+
+# Payment
+![Payment](https://github.com/DataWorksWithSwarna/Web_Development/blob/main/Zarnave%20Haven%206.png)
